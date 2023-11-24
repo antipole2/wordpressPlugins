@@ -6,7 +6,7 @@
  * @package     Buddy_bbPress_Support_Topic
  * @author      G3ronim0 with fixes Tony Voss
  * @link        https://github.com/G3ronim0/buddy-bbPress-Support-Topic
- * @version     2.1.4-fixed
+ * @version     9.1
  *
  * @copyright   2017 G3ronim0
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher

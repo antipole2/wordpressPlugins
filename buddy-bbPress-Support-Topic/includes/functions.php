@@ -1444,7 +1444,7 @@ function bpbbpst_display_referer_to_moderators() {
  * @return string html output
  */
 function bpbbpst_referer_topic_subscribed( $output /* = ''*/, $checked ) {
-	if (isEmpty($output)) $output = '';	// Tony fix
+	if (empty($output)) $output = '';	// Tony fix
 	if ( ! empty( $checked ) ) {
 		return $output;
 	}
