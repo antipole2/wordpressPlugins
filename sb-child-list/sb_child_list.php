@@ -3,10 +3,10 @@
 /*
  Plugin Name: SB Child List
  Description: The total in-page navigation solution for Wordpress. Using the shortcodes and widgets provided you can display navigation between your parent, child and sibling items in any format you can think of.
- Author: Sean Barton (Tortoise IT)
- Plugin URI: http://www.sean-barton.co.uk
+ Author: Sean Barton (Tortoise IT) fixed Tony Voss
+ Plugin URI: https://github.com/antipole2/wordpressPlugins/tree/main/sb-child-list
  Author URI: http://www.sean-barton.co.uk
- Version: 4.5
+ Version: 9.0
  */
 
 $sb_cl_dir           = str_replace( '\\', '/', dirname( __FILE__ ) );
@@ -458,7 +458,19 @@ function sb_cl_filter_post( $atts, $content, $tag ) {
 
 	switch ( $tag ) {
 		case 'sb_child_list':
-			$return = sb_cl_render_child_list( $template, @$atts['parent_id'], @$atts['nest_level'], @$atts['orderby'], @$atts['order'], @$atts['thumb_size'], @$atts['category'], @$atts['limit'] );
+// v9 fix by TV
+			if (empty($p_id))	// fix for empty
+				$return = sb_cl_render_child_list( $template, '', '', '', '', '', '', '');
+			else			
+				$return = sb_cl_render_child_list( $template,
+					@$atts['parent_id'],
+					@$atts['nest_level'],
+					@$atts['orderby'],
+					@$atts['order'],
+					@$atts['thumb_size'],
+					@$atts['category'],
+					@$atts['limit'] );
+// was		$return = sb_cl_render_child_list( $template, @$atts['parent_id'], @$atts['nest_level'], @$atts['orderby'], @$atts['order'], @$atts['thumb_size'], @$atts['category'], @$atts['limit'] );
 			break;
 		case 'sb_cat_list':
 			$return = sb_cl_render_cat_list( $atts['category'], $atts['limit'], @$atts['order'], $template, @$atts['thumb_size'] );
@@ -829,19 +841,23 @@ function sb_cl_admin_page() {
 	echo '</div>';
 }
 
-function sb_cl_post( $key, $default = '', $strip_tags = false ) {
+function sb_cl_post( $key, $default /* = '' */, $strip_tags = false ) {
+	if (isEmpty($default)) $default = '';	// added as fix by Tony v9.0
 	return sb_cl_get_global( $_POST, $key, $default, $strip_tags );
 }
 
-function sb_cl_get( $key, $default = '', $strip_tags = false ) {
+function sb_cl_get( $key, $default  /* = '' */, $strip_tags = false ) {
+	if (isEmpty($default)) $default = '';	// added as fix by Tony v9.0
 	return sb_cl_get_global( $_GET, $key, $default, $strip_tags );
 }
 
-function sb_cl_request( $key, $default = '', $strip_tags = false ) {
+function sb_cl_request( $key, $default  /* = '' */, $strip_tags = false ) {
+	if (isEmpty($default)) $default = '';	// added as fix by Tony v9.0
 	return sb_cl_get_global( $_REQUEST, $key, $default, $strip_tags );
 }
 
-function sb_cl_get_global( $array, $key, $default = '', $strip_tags ) {
+function sb_cl_get_global( $array, $key, $default /* = '' */, $strip_tags ) {
+	if (isEmpty($default)) $default = '';	// added as fix by Tony v9.0
 	if ( isset( $array[ $key ] ) ) {
 		$default = $array[ $key ];
 

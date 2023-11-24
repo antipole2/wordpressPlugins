@@ -129,4 +129,6 @@ Screenshots available at: http://www.sean-barton.co.uk/sb-child-list/
  4.4:   Minor Update. Replaced mysql_real_escape_string for esc_sql to work around errors in newer versions of PHP
 
 4.5:	Minor Update. Changed old style constructor in the widget code and updated to modern Widgets API
+
+ 9.0:   Taken over by Tony Voss.  Fixed to avoid non-default parameters after a default parameter deprecated in PHP 8
  
