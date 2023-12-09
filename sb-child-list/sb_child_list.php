@@ -6,7 +6,7 @@
  Author: Sean Barton (Tortoise IT) fixed Tony Voss
  Plugin URI: https://github.com/antipole2/wordpressPlugins/tree/main/sb-child-list
  Author URI: http://www.sean-barton.co.uk
- Version: 9.1
+ Version: 9.1.1
  
  Updates: 9.1	avoid function form when $instance empty
  */
@@ -966,7 +966,7 @@ class sb_cl_pages_widget extends WP_Widget {
 		global $sbu, $sb_cl_max_templates;
 		
 		// following line added as fix by Tony v9.1 to avoid PHP 8 warnings
-		if (isEmpty( $instance['title'])  || isEmpty( $instance['show_parent_link']) || isEmpty( $instance['text'])) return;
+		if (empty( $instance['title'])  || empty( $instance['show_parent_link']) || empty( $instance['text'])) return;
 
 		$title            = esc_attr( $instance['title'] );
 		$show_parent_link = esc_attr( $instance['show_parent_link'] );
