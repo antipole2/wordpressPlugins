@@ -1,3 +1,6 @@
+I am no longer using this plugin and will not be maintaining it further.  Tony
+==============================================================================
+
 Buddy bbPress Support topic
 ===========================
 
