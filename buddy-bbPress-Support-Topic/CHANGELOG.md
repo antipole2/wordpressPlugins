@@ -1,6 +1,12 @@
 Versions
 ========
 
+9.1
+---
+
++ PHP 8 deprecates function with non-default parameter after default one.
+Fixed by testing for empty parameter and supplying default within function
+
 2.1.4
 ---
 
