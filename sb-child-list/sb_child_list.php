@@ -6,9 +6,10 @@
  Author: Sean Barton (Tortoise IT) fixed Tony Voss
  Plugin URI: https://github.com/antipole2/wordpressPlugins/tree/main/sb-child-list
  Author URI: http://www.sean-barton.co.uk
- Version: 9.1.1
+ Version: 9.1.2
  
  Updates: 9.1	avoid function form when $instance empty
+ 		  9.1.2 avoid 'Increment on non-alphanumeric string is deprecated' warning under PHP8.3
  */
 
 $sb_cl_dir           = str_replace( '\\', '/', dirname( __FILE__ ) );
@@ -462,7 +463,7 @@ function sb_cl_filter_post( $atts, $content, $tag ) {
 		case 'sb_child_list':
 // v9 fix by TV
 			if (empty($p_id))	// fix for empty
-				$return = sb_cl_render_child_list( $template, '', '', '', '', '', '', '');
+				$return = sb_cl_render_child_list( $template, '', 0, '', '', '', '', ''); // v9.0.1 puts 0 instead of '' in third argument to prevent warning over its decrement
 			else			
 				$return = sb_cl_render_child_list( $template,
 					@$atts['parent_id'],
